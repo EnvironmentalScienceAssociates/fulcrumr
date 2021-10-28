@@ -4,16 +4,14 @@
 \alias{fulcrum_all_tables}
 \title{Get Fulcrum tables}
 \usage{
-fulcrum_all_tables(query_string, api_key = get_api_key())
+fulcrum_all_tables(api_key = get_api_key())
 }
 \arguments{
-\item{query_string}{SQL statement as string}
-
 \item{api_key}{Fulcrum authentication token stored as environment variable}
 }
 \description{
 Get all available Fulcrum tables
 }
 \details{
-Returns parsed JSON body from response to Fulcrum query.
+Returns data frame with name, type, etc. of all available Fulcrum tables
 }

@@ -3,8 +3,6 @@
 #'
 #' Set or get Fulcrum API key as environmental variable in .Renviron
 #'
-#' @md
-#'
 #' @export
 set_api_key <- function(key = NULL) {
   if (is.null(key)) {
@@ -28,7 +26,7 @@ get_api_key <- function() {
 #'
 #' Submit GET request to Fulcrum Query API based on SQL query string
 #'
-#' Returns parsed JSON body from response to Fulcrum query.
+#' Returns response to Fulcrum query as a data frame
 #'
 #' @md
 #' @param query_string   SQL statement as string
@@ -36,25 +34,46 @@ get_api_key <- function() {
 #' @param base_url       Base URL for Fulcrum Query API
 #' @export
 
-fulcrum_query <- function(query_string, api_key = get_api_key(), base_url = "https://api.fulcrumapp.com/api/v2/query/") {
-  httr2::request(base_url) %>%
-    httr2::req_url_query(token = api_key, q = query_string) %>%
-    httr2::req_user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)") %>%
-    httr2::req_perform() %>%
-    httr2::resp_body_json()
+fulcrum_query <- function(query_string,
+                          api_key = get_api_key(),
+                          base_url = "https://api.fulcrumapp.com/api/v2/query/") {
+  resp <- httr::GET(url = base_url, query = list("token" = api_key, "q" = query_string),
+                    httr::user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)"))
+  status <- httr::http_status(resp)
+  if (status$category == "Success") {
+    return(httr::content(resp, as = "parsed", type = "text/csv"))
+  } else {
+    stop("Query unsuccessful")
+  }
 }
 
 #' Get Fulcrum tables
 #'
 #' Get all available Fulcrum tables
 #'
-#' Returns parsed JSON body from response to Fulcrum query.
+#' Returns data frame with name, type, etc. of all available Fulcrum tables
 #'
 #' @md
-#' @param query_string   SQL statement as string
 #' @param api_key        Fulcrum authentication token stored as environment variable
 #' @export
 
-fulcrum_all_tables <- function(query_string, api_key = get_api_key()) {
+fulcrum_all_tables <- function(api_key = get_api_key()) {
   fulcrum_query("SELECT * FROM tables;", api_key)
 }
+
+#' Get Fulcrum table
+#'
+#' Get Fulcrum table with specified `table_name`
+#'
+#' Returns data frame with data for specified Fulcrum table
+#'
+#' @md
+#' @param table_name     Name of Fulcrum table
+#' @param api_key        Fulcrum authentication token stored as environment variable
+#' @export
+
+fulcrum_table <- function(table_name, api_key = get_api_key()) {
+  fulcrum_query(glue::glue("SELECT * FROM {table_name};"), api_key)
+}
+
+

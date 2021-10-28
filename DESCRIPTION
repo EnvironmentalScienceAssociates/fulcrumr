@@ -4,12 +4,12 @@ Title: R Interface to Fulcrum API
 Version: 0.1.0
 Author: Travis Hinkelman
 Maintainer: Travis Hinkelman <thinkelman@esassoc.com>
-Description: R interface to Fulcrum API.
+Description: R interface to Fulcrum API. Currently, only interfaces with Fulcrum Query API.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
     askpass,
-    httr2,
-    magrittr
+    glue,
+    httr
 RoxygenNote: 7.1.2
