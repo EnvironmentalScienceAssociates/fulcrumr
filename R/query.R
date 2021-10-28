@@ -37,10 +37,10 @@ get_api_key <- function() {
 #' @export
 
 fulcrum_query <- function(query_string, api_key = get_api_key(), base_url = "https://api.fulcrumapp.com/api/v2/query/") {
-  httr2::request(base_url) %>%
-    httr2::req_url_query(token = api_key, q = query_string) %>%
-    httr2::req_user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)") %>%
-    httr2::req_perform() %>%
+  httr2::request(base_url) magrittr::`%>%`
+    httr2::req_url_query(token = api_key, q = query_string) magrittr::`%>%`
+    httr2::req_user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)") magrittr::`%>%`
+    httr2::req_perform() magrittr::`%>%`
     httr2::resp_body_json()
 }
 
