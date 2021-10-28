@@ -10,5 +10,7 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     askpass,
-    httr2
+    glue,
+    httr2,
+    magrittr
 RoxygenNote: 7.1.2
