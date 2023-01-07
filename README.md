@@ -1,6 +1,6 @@
 ## fulcrumr
 
-R interface to [Fulcrum API](https://docs.fulcrumapp.com/docs) based on [`httr` package](https://httr.r-lib.org/). Currently, only interfaces with [Fulcrum Query API](https://docs.fulcrumapp.com/reference/query-intro).
+R interface to [Fulcrum API](https://docs.fulcrumapp.com/docs) based on [`httr2` package](https://httr2.r-lib.org/). Currently, only interfaces with [Fulcrum Query API](https://docs.fulcrumapp.com/reference/query-intro).
 
 See also [fulcRum](https://github.com/aecom-ecology/fulcRum).
 

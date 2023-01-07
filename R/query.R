@@ -37,14 +37,12 @@ get_api_key <- function() {
 fulcrum_query <- function(query_string,
                           api_key = get_api_key(),
                           base_url = "https://api.fulcrumapp.com/api/v2/query/") {
-  resp <- httr::GET(url = base_url, query = list("token" = api_key, "q" = query_string),
-                    httr::user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)"))
-  status <- httr::http_status(resp)
-  if (status$category == "Success") {
-    return(httr::content(resp, as = "parsed", type = "text/csv"))
-  } else {
-    stop("Query unsuccessful")
-  }
+  httr2::request(base_url) |>
+    httr2::req_url_query(token = api_key, q = query_string) |>
+    httr2::req_user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)") |>
+    httr2::req_perform() |>
+    httr2::resp_body_string() |>
+    readr::read_csv()
 }
 
 #' Get Fulcrum tables
