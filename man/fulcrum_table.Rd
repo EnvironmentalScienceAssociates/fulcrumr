@@ -9,7 +9,7 @@ fulcrum_table(table_name, api_key = get_api_key())
 \arguments{
 \item{table_name}{Name of Fulcrum table}
 
-\item{api_key}{Fulcrum authentication token stored as environment variable}
+\item{api_key}{Fulcrum authentication key}
 }
 \description{
 Get Fulcrum table with specified \code{table_name}

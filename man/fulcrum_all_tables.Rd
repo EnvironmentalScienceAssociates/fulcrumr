@@ -7,7 +7,7 @@
 fulcrum_all_tables(api_key = get_api_key())
 }
 \arguments{
-\item{api_key}{Fulcrum authentication token stored as environment variable}
+\item{api_key}{Fulcrum authentication key}
 }
 \description{
 Get all available Fulcrum tables

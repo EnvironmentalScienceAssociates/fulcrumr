@@ -13,7 +13,7 @@ fulcrum_query(
 \arguments{
 \item{query_string}{SQL statement as string}
 
-\item{api_key}{Fulcrum authentication token stored as environment variable}
+\item{api_key}{Fulcrum authentication key}
 
 \item{base_url}{Base URL for Fulcrum Query API}
 }

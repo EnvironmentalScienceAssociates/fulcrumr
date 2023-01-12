@@ -5,9 +5,12 @@
 \alias{get_api_key}
 \title{Set or get Fulcrum API key}
 \usage{
-set_api_key(key = NULL)
+set_api_key(api_key = NULL)
 
 get_api_key()
+}
+\arguments{
+\item{api_key}{Fulcrum authentication key}
 }
 \description{
 Set or get Fulcrum API key as environmental variable in .Renviron

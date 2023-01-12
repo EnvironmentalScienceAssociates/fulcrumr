@@ -3,20 +3,22 @@
 #'
 #' Set or get Fulcrum API key as environmental variable in .Renviron
 #'
+#' @param api_key        Fulcrum authentication key
+#'
 #' @export
-set_api_key <- function(key = NULL) {
-  if (is.null(key)) {
-    key <- askpass::askpass("Please enter your API key")
+set_api_key <- function(api_key = NULL) {
+  if (is.null(api_key)) {
+    api_key <- askpass::askpass("Please enter your API key")
   }
-  Sys.setenv("FulcrumKey" = key)
+  Sys.setenv("FulcrumKey" = api_key)
 }
 
 #' @rdname set_api_key
 #' @export
 get_api_key <- function() {
-  key <- Sys.getenv("FulcrumKey")
-  if (!identical(key, "")) {
-    return(key)
+  api_key <- Sys.getenv("FulcrumKey")
+  if (!identical(api_key, "")) {
+    return(api_key)
   } else {
     stop("No API key found, please supply with `api_key` argument or with FulcrumKey env var")
   }
@@ -30,7 +32,7 @@ get_api_key <- function() {
 #'
 #' @md
 #' @param query_string   SQL statement as string
-#' @param api_key        Fulcrum authentication token stored as environment variable
+#' @param api_key        Fulcrum authentication key
 #' @param base_url       Base URL for Fulcrum Query API
 #' @export
 
@@ -52,7 +54,7 @@ fulcrum_query <- function(query_string,
 #' Returns data frame with name, type, etc. of all available Fulcrum tables
 #'
 #' @md
-#' @param api_key        Fulcrum authentication token stored as environment variable
+#' @param api_key        Fulcrum authentication key
 #' @export
 
 fulcrum_all_tables <- function(api_key = get_api_key()) {
@@ -67,7 +69,7 @@ fulcrum_all_tables <- function(api_key = get_api_key()) {
 #'
 #' @md
 #' @param table_name     Name of Fulcrum table
-#' @param api_key        Fulcrum authentication token stored as environment variable
+#' @param api_key        Fulcrum authentication key
 #' @export
 
 fulcrum_table <- function(table_name, api_key = get_api_key()) {
