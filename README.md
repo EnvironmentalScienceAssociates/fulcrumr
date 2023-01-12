@@ -8,14 +8,21 @@ See also [fulcRum](https://github.com/aecom-ecology/fulcRum).
 
 ### Installation
 
-`fulcrumr` is available through R-universe
+Enable repository.
 
 ```
-install.packages("fulcrumr", repos = "https://environmentalscienceassociates.r-universe.dev")
+options(repos = c(ESA = "https://environmentalscienceassociates.r-universe.dev",
+                  CRAN = "https://cloud.r-project.org"))
 ```
 
-and GitHub.
+Download and install `fulcrumr` in R.
 
 ```
-remotes::install_github("EnvironmentalScienceAssociates/fulcrumr")
+install.packages("fulcrumr")
+```
+
+Browse the `fulcrumr` manual pages.
+
+```
+help(package = "fulcrumr")
 ```
