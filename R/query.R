@@ -28,7 +28,7 @@ get_api_key <- function() {
 #'
 #' Submit GET request to Fulcrum Query API based on SQL query string
 #'
-#' Returns response to Fulcrum query as a data frame
+#' Returns response to Fulcrum query as httr2 response object
 #'
 #' @md
 #' @param query_string   SQL statement as string
@@ -42,9 +42,7 @@ fulcrum_query <- function(query_string,
   httr2::request(base_url) |>
     httr2::req_url_query(token = api_key, q = query_string) |>
     httr2::req_user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)") |>
-    httr2::req_perform() |>
-    httr2::resp_body_string() |>
-    readr::read_csv()
+    httr2::req_perform()
 }
 
 #' Get Fulcrum tables
@@ -55,10 +53,13 @@ fulcrum_query <- function(query_string,
 #'
 #' @md
 #' @param api_key        Fulcrum authentication key
+#' @param col_types      One of NULL, a cols() specification, or a string. See vignette("readr") for more details.
 #' @export
 
-fulcrum_all_tables <- function(api_key = get_api_key()) {
-  fulcrum_query("SELECT * FROM tables;", api_key)
+fulcrum_all_tables <- function(api_key = get_api_key(), col_types = NULL) {
+  fulcrum_query("SELECT * FROM tables;", api_key) |>
+    httr2::resp_body_string() |>
+    readr::read_csv(col_types = col_types)
 }
 
 #' Get Fulcrum table
@@ -70,10 +71,13 @@ fulcrum_all_tables <- function(api_key = get_api_key()) {
 #' @md
 #' @param table_name     Name of Fulcrum table
 #' @param api_key        Fulcrum authentication key
+#' @param col_types      One of NULL, a cols() specification, or a string. See vignette("readr") for more details.
 #' @export
 
 fulcrum_table <- function(table_name, api_key = get_api_key()) {
-  fulcrum_query(glue::glue("SELECT * FROM {table_name};"), api_key)
+  fulcrum_query(glue::glue("SELECT * FROM {table_name};"), api_key) |>
+    httr2::resp_body_string() |>
+    readr::read_csv(col_types = col_types)
 }
 
 

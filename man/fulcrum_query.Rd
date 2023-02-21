@@ -21,5 +21,5 @@ fulcrum_query(
 Submit GET request to Fulcrum Query API based on SQL query string
 }
 \details{
-Returns response to Fulcrum query as a data frame
+Returns response to Fulcrum query as httr2 response object
 }

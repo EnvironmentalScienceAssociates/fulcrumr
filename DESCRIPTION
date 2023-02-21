@@ -1,7 +1,7 @@
 Package: fulcrumr
 Type: Package
 Title: R Interface to Fulcrum API
-Version: 0.1.1
+Version: 0.1.2
 Author: Travis Hinkelman
 Maintainer: Travis Hinkelman <thinkelman@esassoc.com>
 Description: R interface to Fulcrum API. Currently, only interfaces with Fulcrum Query API.

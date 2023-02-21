@@ -4,10 +4,12 @@
 \alias{fulcrum_all_tables}
 \title{Get Fulcrum tables}
 \usage{
-fulcrum_all_tables(api_key = get_api_key())
+fulcrum_all_tables(api_key = get_api_key(), col_types = NULL)
 }
 \arguments{
 \item{api_key}{Fulcrum authentication key}
+
+\item{col_types}{One of NULL, a cols() specification, or a string. See vignette("readr") for more details.}
 }
 \description{
 Get all available Fulcrum tables

@@ -10,6 +10,8 @@ fulcrum_table(table_name, api_key = get_api_key())
 \item{table_name}{Name of Fulcrum table}
 
 \item{api_key}{Fulcrum authentication key}
+
+\item{col_types}{One of NULL, a cols() specification, or a string. See vignette("readr") for more details.}
 }
 \description{
 Get Fulcrum table with specified \code{table_name}
