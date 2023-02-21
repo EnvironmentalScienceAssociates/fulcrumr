@@ -74,7 +74,7 @@ fulcrum_all_tables <- function(api_key = get_api_key(), col_types = NULL) {
 #' @param col_types      One of NULL, a cols() specification, or a string. See vignette("readr") for more details.
 #' @export
 
-fulcrum_table <- function(table_name, api_key = get_api_key()) {
+fulcrum_table <- function(table_name, api_key = get_api_key(), col_types = NULL) {
   fulcrum_query(glue::glue("SELECT * FROM {table_name};"), api_key) |>
     httr2::resp_body_string() |>
     readr::read_csv(col_types = col_types)

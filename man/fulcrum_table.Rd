@@ -4,7 +4,7 @@
 \alias{fulcrum_table}
 \title{Get Fulcrum table}
 \usage{
-fulcrum_table(table_name, api_key = get_api_key())
+fulcrum_table(table_name, api_key = get_api_key(), col_types = NULL)
 }
 \arguments{
 \item{table_name}{Name of Fulcrum table}
