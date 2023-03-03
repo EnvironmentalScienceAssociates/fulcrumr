@@ -28,12 +28,13 @@ get_api_key <- function() {
 #'
 #' Submit GET request to Fulcrum Query API based on SQL query string
 #'
-#' Returns response to Fulcrum query as httr2 response object
 #'
 #' @md
 #' @param query_string   SQL statement as string
 #' @param api_key        Fulcrum authentication key
 #' @param base_url       Base URL for Fulcrum Query API
+#' @return If request is successful (i.e. the request was successfully performed
+#' and a response with HTTP status code <400 was recieved), an HTTP response; otherwise throws an error.
 #' @export
 
 fulcrum_query <- function(query_string,
@@ -49,11 +50,11 @@ fulcrum_query <- function(query_string,
 #'
 #' Get all available Fulcrum tables
 #'
-#' Returns data frame with name, type, etc. of all available Fulcrum tables
 #'
 #' @md
 #' @param api_key        Fulcrum authentication key
 #' @param col_types      One of NULL, a cols() specification, or a string. See vignette("readr") for more details.
+#' @return A data frame with name, type, etc. of all available Fulcrum tables
 #' @export
 
 fulcrum_all_tables <- function(api_key = get_api_key(), col_types = NULL) {
@@ -66,12 +67,12 @@ fulcrum_all_tables <- function(api_key = get_api_key(), col_types = NULL) {
 #'
 #' Get Fulcrum table with specified `table_name`
 #'
-#' Returns data frame with data for specified Fulcrum table
 #'
 #' @md
 #' @param table_name     Name of Fulcrum table
 #' @param api_key        Fulcrum authentication key
 #' @param col_types      One of NULL, a cols() specification, or a string. See vignette("readr") for more details.
+#' @return A data frame for specified Fulcrum table
 #' @export
 
 fulcrum_table <- function(table_name, api_key = get_api_key(), col_types = NULL) {

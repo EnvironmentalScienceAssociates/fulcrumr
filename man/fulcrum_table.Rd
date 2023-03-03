@@ -13,9 +13,9 @@ fulcrum_table(table_name, api_key = get_api_key(), col_types = NULL)
 
 \item{col_types}{One of NULL, a cols() specification, or a string. See vignette("readr") for more details.}
 }
+\value{
+A data frame for specified Fulcrum table
+}
 \description{
 Get Fulcrum table with specified \code{table_name}
-}
-\details{
-Returns data frame with data for specified Fulcrum table
 }

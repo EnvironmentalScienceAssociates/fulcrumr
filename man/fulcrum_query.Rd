@@ -17,9 +17,10 @@ fulcrum_query(
 
 \item{base_url}{Base URL for Fulcrum Query API}
 }
+\value{
+If request is successful (i.e. the request was successfully performed
+and a response with HTTP status code <400 was recieved), an HTTP response; otherwise throws an error.
+}
 \description{
 Submit GET request to Fulcrum Query API based on SQL query string
-}
-\details{
-Returns response to Fulcrum query as httr2 response object
 }

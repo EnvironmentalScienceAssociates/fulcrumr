@@ -11,9 +11,9 @@ fulcrum_all_tables(api_key = get_api_key(), col_types = NULL)
 
 \item{col_types}{One of NULL, a cols() specification, or a string. See vignette("readr") for more details.}
 }
+\value{
+A data frame with name, type, etc. of all available Fulcrum tables
+}
 \description{
 Get all available Fulcrum tables
-}
-\details{
-Returns data frame with name, type, etc. of all available Fulcrum tables
 }
