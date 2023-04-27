@@ -76,7 +76,9 @@ fulcrum_all_tables <- function(api_key = get_api_key(), col_types = NULL) {
 #' @export
 
 fulcrum_table <- function(table_name, api_key = get_api_key(), col_types = NULL) {
-  fulcrum_query(glue::glue("SELECT * FROM {table_name};"), api_key) |>
+  # automatically quote table_name because all nested tables with have / in name (plus likely other special characters)
+  table_name_esc = paste0("\"", table_name, "\"")
+  fulcrum_query(glue::glue("SELECT * FROM {table_name_esc};"), api_key) |>
     httr2::resp_body_string() |>
     readr::read_csv(col_types = col_types)
 }
