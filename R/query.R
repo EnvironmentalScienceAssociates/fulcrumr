@@ -24,6 +24,30 @@ get_api_key <- function() {
   }
 }
 
+#' Get Fulcrum photo
+#'
+#' Submit GET request to Fulcrum Photo API to get individual photo metadata
+#'
+#'
+#' @md
+#' @param photo_id       Photo ID from Fulcrum
+#' @param api_key        Fulcrum authentication key
+#' @param base_url       Base URL for Fulcrum Photo API
+#' @return If request is successful (i.e. the request was successfully performed
+#' and a response with HTTP status code <400 was recieved), an HTTP response; otherwise throws an error.
+#' @export
+
+fulcrum_photo <- function(photo_id,
+                          api_key = get_api_key(),
+                          base_url = "https://api.fulcrumapp.com/api/v2/photos/") {
+  httr2::request(base_url) |>
+    httr2::req_url_query(token = api_key) |>
+    httr2::req_url_path_append(photo_id) |>
+    httr2::req_url_path_append("large.jpg") |>
+    httr2::req_user_agent("fulcrumr (https://github.com/EnvironmentalScienceAssociates/fulcrumr)") |>
+    httr2::req_perform()
+}
+
 #' Query Fulcrum API
 #'
 #' Submit GET request to Fulcrum Query API based on SQL query string
