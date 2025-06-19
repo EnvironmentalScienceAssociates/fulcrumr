@@ -8,6 +8,14 @@ See also [fulcRum](https://github.com/aecom-ecology/fulcRum).
 
 ### Installation
 
+#### GitHub
+
+```
+remotes::install_github("EnvironmentalScienceAssociates/fulcrumr")
+```
+
+#### R-universe
+
 Enable repository.
 
 ```
